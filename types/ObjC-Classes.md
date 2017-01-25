@@ -59,7 +59,7 @@ DerivedClass.prototype = Object.create(NSObject.prototype, { constructor: Derive
 DerivedClass.prototype.derivedInstanceMethod = function () { /* native call */ };
 ```
 
-### JavaScript `instanceof` Opereator
+### JavaScript `instanceof` Operator
 You can use the JavaScript [`instanceof` operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof) to see if an object inherits from a given class:
 ```javascript
 var object = DerivedClass.alloc().init();
