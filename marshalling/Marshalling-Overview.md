@@ -81,7 +81,7 @@ var date = NSDate.date();
 var formattedDate = formatter.stringFromDate(date);
 ```
 
-An API expecting the `id` data type in Objective-C means it will any accept Objective-C class or object in JavaScript.
+An API expecting the `id` data type in Objective-C means it will accept any Objective-C class or object in JavaScript.
 ```objective-c
 NSMutableArray *array = [[NSMutableArray alloc] init];
 Class buttonClass = [UIButton class];
