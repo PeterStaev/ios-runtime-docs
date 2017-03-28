@@ -45,8 +45,27 @@ If there is no CocoaPod for the current library you can still use a plugin, but 
 * Shared frameworks can be used only in iOS 8 and above. This limitation is valid for pure native applications, too. If you are targeting iOS versions lower than 8.0 you must use static frameworks.
 
 # Static Frameworks
+> Simple way to verify, whether one framework is static or not, is to run `file <path to the framework>/<framework name>` command in terminal. For example: `file ~/TNSFramework/TNSFrTest.framework/TNSFrTest` As a result you will receive following message: `current ar archive random library` for static framework and `dynamically linked shared library` for dinamically linked one.
 
-Most of the static frameworks don't contain `module.modulemap` file, so you have to add the file manually. This is why you can't use CocoaPods to include static frameworks. To include a static framework in a plugin grab a prebuilt version of the framework, add a `module.modulemap` file in it and drop it in your `{plugin-path}/platforms/ios/` folder.
+Most of the static frameworks don't contain `module.modulemap` file, so you have to add the file manually. This is why you can't use CocoaPods to include static frameworks. To include a static framework in a plugin grab a prebuilt version of the framework, add a `module.modulemap` file in it and drop it in your `{plugin-path}/platforms/ios/{framework}/Modules` folder. The `module.modulemap` file should contains the following information:
+```
+framework module <framework-name> {
+  umbrella header "<framework-header-file-name>.h"
+
+  export *
+  module * { export * }
+}
+```
+
+For example:
+```
+framework module TNSFrTest {
+  umbrella header "TNSFrTest.h"
+
+  export *
+  module * { export * }
+}
+```
 
 ### Pros
 
